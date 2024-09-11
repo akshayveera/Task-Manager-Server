@@ -30,11 +30,11 @@ getAllUsers = async (req, res) => {
 getSingleUser = async (req, res) => {
 
     try {
-        const id = req.params.id;
-        const user = await User.findOne({_id : id});
-
+        const email = req.auth.email;
+        const user = await User.findOne({email : email});
+        const {_id, name, role} = user;
         if(user) {
-            res.status(200).json(user);
+            res.status(200).json({_id, name, email, role});
         } else {
             res.status(404).json({message : "User not found"});
         }
@@ -88,14 +88,14 @@ userLogin = async (req, res) => {
 
         if(isMatch) {
 
-            const payload = { email, name : user.name };
+            const payload = { email, name : user.name, role : user.role };
             const token = jwt.sign(
                 payload, 
                 process.env.SECRET_KEY,
                 { expiresIn : "24h"}
             )
 
-            return res.status(200).json({message : "Login successful", token, name : user.name});
+            return res.status(200).json({message : "Login successful", token, user : payload});
         } else {
             return res.status(400).json({message : "Invalid password"});
         }

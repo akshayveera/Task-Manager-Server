@@ -9,16 +9,20 @@ const jwtAuthMiddleware = async (req, res, next) => {
             : null;
 
         if(!token) {
-            return res.status(401).json({ message : "No token"});
+            return res.status(401).json({ message : "No token, unauthorized"});
         }
 
         const payload = jwt.verify(token, process.env.SECRET_KEY);
+        // console.log("payload", payload);
+        if(!payload.email){
+            return res.status(401).json({message: "Invalid token"});
+        }
         // console.log("payload", payload);
         req.auth = {...payload};
         next();          
 
     } catch(err) {
-        return res.status(500).json({ error : err.message});
+        return res.status(401).json({ error : err.message});
     }
 }
 

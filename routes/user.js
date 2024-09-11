@@ -7,7 +7,7 @@ const jwtAuthMiddleware = require("../middlewares/jwtAuth")
 
 router.get("/all-users", jwtAuthMiddleware, getAllUsers);
 
-router.get("/user/:id", jwtAuthMiddleware, getSingleUser);
+router.get("/user/me", jwtAuthMiddleware, getSingleUser);
 
 router.post("/add-user", addUser);
 
