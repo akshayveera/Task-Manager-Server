@@ -44,7 +44,7 @@ app.use('/api/v1', taskRoutes);
 
 // --------------- endpoints ----------------
 
-// app.get( "/", localAuthMiddleware,  (req, res) => {
+// app.get( "/",  (req, res) => {
 //     res.json({message : "Welcome to our API"});
 // })
 
