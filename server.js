@@ -44,9 +44,9 @@ app.use('/api/v1', taskRoutes);
 
 // --------------- endpoints ----------------
 
-// app.get( "/",  (req, res) => {
-//     res.json({message : "Welcome to our API"});
-// })
+app.get( "/",  (req, res) => {
+    res.json({message : "Welcome to our API"});
+})
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=>{
