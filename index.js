@@ -13,7 +13,7 @@ const catRoutes = require("./routes/category");
 const jwtAuthMiddleware = require("./middlewares/jwtAuth");
 
 
-const whitelist = ['http://localhost:3000', 'http://localhost:4200'];
+const whitelist = ['http://localhost:3000', 'http://localhost:4200', 'https://taskmanagersite.vercel.app/'];
 
 // CORS options
 const corsOptions = {
