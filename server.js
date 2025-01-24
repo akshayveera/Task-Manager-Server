@@ -36,13 +36,11 @@ app.use(express.json());
 // app.use(passport.initialize());
 // const localAuthMiddleware = passport.authenticate("local", {session : false});
 
+// --------------- endpoints ----------------
 
 app.use('/api/v1', userRoutes);
 app.use('/api/v1', catRoutes);
 app.use('/api/v1', taskRoutes);
-
-
-// --------------- endpoints ----------------
 
 app.get( "/",  (req, res) => {
     res.json({message : "Welcome to our API"});
